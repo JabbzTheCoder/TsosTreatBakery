@@ -3,6 +3,7 @@
      display: flex;
      justify-content: space-between;
      align-items: center;
+     animation: fadeIn 3s;
 }
 .navbar .logo{
     width: 130px;
@@ -13,21 +14,31 @@
     display: flex;
     list-style: none;
     gap: 20px;
-    color: darkgoldenrod;
-    font-size: 18px;
+    color: #a99b04;
+    font-size: 17px;
 }
 
 .navbar-right{
     display: flex;
     align-items: center;
     gap: 40px;
+    
 }
+.navbar-right img{
+    width: 40px;
+}
+
+.navbar-right img:hover{
+    width: 41px;
+    cursor: pointer;
+}
+
 
 .navbar button{
     background: transparent;
     font-size: 16px;
-    color:darkgoldenrod;
-    border: 1px solid darkgoldenrod;
+   color: #a99b04;
+    border: 1px solid #a99b04;
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
@@ -35,5 +46,28 @@
 }
 
 .navbar button:hover{
-    background-color: gold;
+    font-size: 18px;
+}
+
+.navbar .active{
+    padding-bottom: 2px;
+    border-bottom: 2px solid #a99b04;
+
+}
+.navbar li{
+    cursor: pointer;
+}
+
+.navbar-search-icon{
+    position: relative;
+}
+
+.navbar-search-icon .dot{
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: tomato;
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
 }
