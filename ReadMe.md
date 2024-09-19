@@ -6,15 +6,15 @@
 
 This web application allows customers of Tso's Bakery to browse delicious baked goods, add items to their cart, place orders, and make secure online payments. Built using the MERN stack (MongoDB, Express.js, React, Node.js), this project provides a user-friendly and convenient way for customers to enjoy Tso's Bakery offerings from the comfort of their homes.
 
-**Live Demo:** (Replace with link to your deployed site if available)
+**Live Demo:** https://tsostreatlanding.netlify.app/
 
-**Author(s):**  (Add your name and link to your LinkedIn profile here)
+**Author(s):**  Kamogelo Motlhale - https://www.linkedin.com/in/kamogelo-motlhale-abb53b14a/
 
 **Installation:**
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/JabbzTheCoder/TsosTreatBakery
    ```
 2. **Install dependencies:**
    ```bash
