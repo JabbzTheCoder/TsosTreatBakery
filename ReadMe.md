@@ -18,19 +18,25 @@ This web application allows customers of Tso's Bakery to browse delicious baked 
    ```
 2. **Install dependencies:**
    ```bash
-   cd client
+   cd frontend
    npm install
-   cd server
+   cd backend
    npm install
    ```
 3. **Set up MongoDB:**
-   Create a MongoDB database and configure the connection string in `server/index.js`.
-4. **Start the development server:**
+   Create a MongoDB database and configure the connection string in `backend/config.js`.
+4. **Configure PayFast and Courier Guy APIs:**
+   - Create PayFast and Courier Guy API accounts and obtain your API keys.
+   - Update the `backend/config.js` file with your PayFast and Courier Guy API credentials.
+
+5. **Start the development servers:**
    ```bash
-   cd client
+   cd frontend
+   npm start
+   cd backend
    npm start
    ```
-   The application will be accessible at `http://localhost:3000`.
+   The frontend will be accessible at `http://localhost:3000` and the backend will be running on a different port (default is 3001).
 
 **Usage:**
 
@@ -38,7 +44,26 @@ This web application allows customers of Tso's Bakery to browse delicious baked 
 * **Add to cart:** Click the "Add to Cart" button on product pages.
 * **View cart:** Check items in your cart and update quantities.
 * **Checkout:** Proceed to checkout and enter shipping information.
-* **Payment:** Select a payment method and complete the transaction. (Note: Secure payment processing integration is required)
+* **Payment:** Select a payment method and complete the transaction using PayFast.
+* **Shipping:** Orders will be shipped using Courier Guy.
+
+**Authentication:**
+
+* We use JSON Web Tokens (JWT) for authentication. Users can create accounts and log in to access protected features.
+
+**Testing:**
+
+* We will use a popular JavaScript testing library like Jest or Mocha to write unit and integration tests for the frontend and backend.
+* Tests will cover various scenarios, including:
+    - API endpoints
+    - Component rendering
+    - Data validation
+    - Authentication and authorization
+
+**Deployment:**
+
+* We will deploy the application to Netlify for a seamless and efficient deployment process.
+* Netlify provides features like continuous deployment, automatic HTTPS, and global CDN.
 
 **Contributing:**
 
@@ -54,11 +79,3 @@ We welcome contributions to this project! If you'd like to contribute, please fo
 
 This project is licensed under the MIT License.  A copy of the license is available in the `LICENSE` file.
 
-**Additional Notes:**
-
-* This README provides a basic overview of the Tso's Bakery web application. Feel free to customize and extend it based on your specific requirements and preferences.
-* **Authentication:** Implement user authentication and authorization if necessary (e.g., using JWT).
-* **Payment integration:** Integrate with a payment gateway (e.g., Stripe, PayPal) to handle secure transactions.
-* **Error handling:** Implement proper error handling and display informative messages to users.
-* **Testing:** Write unit and integration tests to ensure code quality and reliability.
-* **Deployment:** Deploy the application to a production environment using a platform like Heroku, AWS, or Netlify.
