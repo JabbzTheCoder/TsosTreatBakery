@@ -71,9 +71,8 @@ We welcome contributions to this project! If you'd like to contribute, please fo
 
 **Related Projects:**
 
-* Here are some links to other MERN Stack projects that you might find interesting:
-    * [Link to another MERN project 1]
-    * [Link to another MERN project 2] 
+*Check my other Repos*
+    * https://github.com/JabbzTheCoder
 
 **Licensing:**
 
