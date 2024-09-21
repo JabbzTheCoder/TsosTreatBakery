@@ -23,4 +23,30 @@ const addProduct = async (req,res) =>{
    }
 }
 
-export {addProduct}
+//all products list
+const listProduct = async (req,res) => {
+    try{
+      const products  = await productModel.find({});
+      res.json({success:true,data:products})
+    }catch (error){
+      console.log(error)
+      res.json({success:false,message:error})
+
+    }
+}
+// Remove product item
+const removeProduct = async (req,res) => {
+    try {
+      const product = await productModel.findById(req.body.id)
+      //remove image from uploads
+      fs.unlink(`uploads/${product.image}`, ()=>{})
+
+      await productModel.findByIdAndDelete(req.body.id) 
+      res.json({success:true, message:"Product deleted successfully"})
+    } catch (error) {
+      console.log(error)
+      res.json({success:false, message:"Erorr"})
+    }
+}
+
+export {addProduct,listProduct,removeProduct}
