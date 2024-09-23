@@ -24,8 +24,8 @@
 }
 
 .sidebar-option.active{
-    background-color: #fff0ed;
-    border-color: gold ;
+    background-color: #a99b04;
+    border-color: gold;
 }
 
 @media (max-width:900px) {

@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import './AddProducts.css'
 import { assets } from '../../assets/assets'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { url } from '../../assets/assets';
 
 const AddProducts = () => {
 
-    const url = "http://localhost:4000"
     const [image,setImage] = useState(false);
     const [data,setData] = useState({
         name:"",
@@ -14,58 +15,43 @@ const AddProducts = () => {
         category:"scones"
     })
 
+
+   
     const onChangeHandler = (event) =>{
         const name = event.target.name;
         const value = event.target.value;
         setData(data=>({...data,[name]:value}))
     }
 
-    const onSubmitHandler = async (event) =>{
+    const onSubmitHandler = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append("name",data.name)
-        formData.append("description", data.description)
-        formData.append("price", Number(data.price))
-        formData.append("category", data.category)
-        formData.append("image",image)
-
-        fetch('http://localhost:4000/api/product/add', {
-            method: 'POST',
-            body: formData, // Replace 'data' with your actual data object
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(data => {
-            console.log('Success:', data);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-          
-
-        // const response = await fetch('http://localhost:4000/api/product/add', {
-        //     method: 'POST',
-        //     body: formData, // Convert the data to JSON
-        // });
-
-
-        // const response = await axios.post(`${url}/api/product/add`,formData)
-        //console.log(response.data)
-        // if (response.data.success){
-        //     setData({
-        //         name:"",
-        //         description:"",
-        //         price:"",
-        //         category:"scones"
-        //     })
-        //     setImage(false)
-        // } 
-
-    }
+        formData.append("name", data.name);
+        formData.append("description", data.description);
+        formData.append("price", Number(data.price));
+        formData.append("category", data.category);
+        formData.append("image", image);
+    
+        try {
+            const response = await axios.post(`${url}/api/product/add`, formData);
+    
+            if (response.data.success) {
+                setData({
+                    name: "",
+                    description: "",
+                    price: "",
+                    category: "scones",
+                });
+                setImage(false);
+                toast.success(response.data.message)
+            } else {
+                toast.error(response.data.message)
+            } 
+        } catch (error) {
+            console.error("Error during submission:", error);
+        }
+    };
+    
  
  
     return (

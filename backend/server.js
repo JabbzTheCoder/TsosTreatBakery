@@ -1,30 +1,36 @@
-import express from "express"
-import cors from "cors"
-import { connectDB } from "./config/db.js"
-import productRouter from "./routes/productRoute.js"
+import express from "express";
+import cors from "cors";
+import { connectDB } from "./config/db.js";
+import productRouter from "./routes/productRoute.js";
 
+// App config
+const app = express();
+const port = 4000;
 
-
-// app config 
-const app = express()
-const port = 4000
-
-// db connection
+// DB connection
 connectDB();
 
-//API Endpoints
-app.use("/api/product",productRouter)
-app.use('/images', express.static('uploads'))
+// Middleware
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow requests from your frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    credentials: true, // If you need to support cookies or authentication
+}));
 
-//middleware
-app.use(express.json())
-app.use(cors())
+app.use(express.json()); // Parse JSON bodies
 
+// Static files
+app.use('/images', express.static('uploads'));
 
-app.get("/",(req,res)=>{
-    res.send("API Working")
-})
+// API Endpoints
+app.use("/api/product", productRouter);
 
-app.listen(port, ()=>{
-    console.log(`Server started on http://localhost:${port}`)
-}) 
+// Health check endpoint
+app.get("/", (req, res) => {
+    res.send("API Working");
+});
+
+// Start server
+app.listen(port, () => {
+    console.log(`Server started on http://localhost:${port}`);
+});
