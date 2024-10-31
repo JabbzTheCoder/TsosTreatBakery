@@ -8,7 +8,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
   const {url,setToken} = useContext(StoreContext)
 
-  const [currentState, setCurrentState] = useState("Sign Up")
+  const [currentState, setCurrentState] = useState("Login")
   const [data,setData] = useState({
     name:"",
     email:"",
@@ -22,12 +22,12 @@ const LoginPopup = ({ setShowLogin }) => {
 
   const onLogin = async (event) =>{
     event.preventDefault()
-    let reqUrl = url;
+    let reqUrl = `${url}user/`;
     if (currentState === "Login"){
-      reqUrl += "/api/user/login"
+      reqUrl += "login"
     }
     else{
-      reqUrl += "/api/user/register" 
+      reqUrl += "register" 
     }
     const response = await axios.post(reqUrl,data)
 
@@ -57,8 +57,12 @@ const LoginPopup = ({ setShowLogin }) => {
         </div>
         <button type='submit'>{currentState === "Sign Up" ? "Create account" : "Login"}</button>
         <div className='login-popup-condition'>
-          <input type='checkbox' required />
-          <p>By continuing, I agree to the terms of use & privacy policy.</p>
+        {currentState === "Sign Up"
+        ?
+        <><input type='checkbox' required />
+          <p>By continuing, I agree to the terms of use & privacy policy.</p> 
+          </>
+          : <></>}
         </div>
         {currentState === "Login"
         ?<p>Don't have an account? <span onClick={()=>setCurrentState("Sign Up")}>Create one here!</span></p>
