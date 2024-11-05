@@ -3,6 +3,7 @@ import cors from "cors";
 import { connectDB } from "./config/db.js";
 import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
+import cartRouter from "./routes/cartRoute.js";
 import 'dotenv/config'
 
 // App config
@@ -27,6 +28,7 @@ app.use('/images', express.static('uploads'));
 // API Endpoints
 app.use("/api/product", productRouter);
 app.use("/api/user",userRouter);
+app.use("/api/cart",cartRouter)
 // Health check endpoint
 app.get("/", (req, res) => {
     res.send("API Working");
