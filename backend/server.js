@@ -5,6 +5,7 @@ import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import 'dotenv/config'
+import orderRouter from "./routes/orderRoute.js";
 
 // App config
 const app = express();
@@ -29,6 +30,7 @@ app.use('/images', express.static('uploads'));
 app.use("/api/product", productRouter);
 app.use("/api/user",userRouter);
 app.use("/api/cart",cartRouter)
+app.use("/api/order",orderRouter)
 // Health check endpoint
 app.get("/", (req, res) => {
     res.send("API Working");

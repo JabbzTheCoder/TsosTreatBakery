@@ -42,31 +42,25 @@ const Cart = () => {
       </div>
       <div className='cart-bottom'>
         <div className="cart-total">
-          <h2>Cart Totals</h2>
+          <h2>Cart Total</h2>
           <div>
+            
             <div className='cart-total-details'>
-              <p>Subtotal</p>
-              <p>R{getTotalCartAmount()}</p>
-            </div>
-            <div className='cart-total-details'>
-              <p>Tax</p>
-              <p>R{2}</p>
-            </div>
-            <div className='cart-total-details'>
-              <b>Total</b>
-              <b>R{getTotalCartAmount()+2}</b>
+              <b>Subtotal</b>
+              <b>R{getTotalCartAmount()}</b>
             </div>
           </div>
           <button onClick={()=>navigate('/checkout')}>Proceed to Checkout</button>
         </div>
         <div className='cart-promocode'>
-          <div>
+          {/* <div>
             <p>If you have a promo code, Enter it here</p>
             <div className='cart-promocode-input'>
               <input type='text' placeholder='promo code'/>
               <button>Submit</button>
             </div>
-          </div>
+          </div> */}
+          
         </div>
 
       </div> 
