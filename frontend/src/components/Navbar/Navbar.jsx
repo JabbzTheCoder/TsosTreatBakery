@@ -3,6 +3,8 @@ import './Navbar.css';
 import { assets } from '../../assets/assets';
 import {Link, useNavigate} from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import {CircleUser,ShoppingBag,Search} from 'lucide-react'
+
 
 const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState('home');
@@ -24,14 +26,14 @@ const Navbar = ({setShowLogin}) => {
         <a href='#footer' className={menu === 'contact' ? 'active' : ''} onClick={() => setMenu('contact')}>Contact us</a>
       </ul>
       <div className='navbar-right'>
-        <img src={assets.search_icon} alt='' />
+        <Search/>
         <div className='navbar-search-icon'>
-          <Link to='/cart'><img src={assets.basket_icon} alt='' /></Link>
+          <Link to='/cart'><ShoppingBag/></Link>
           <div className={getTotalCartAmount()===0?"":"dot"}></div>
         </div>
         {token?
         <div className='navbar-profile'>
-          <img src={assets.profile_icon}/>
+          <CircleUser/>
           <ul className='nav-profile-dropdown'>
             <li><img src={assets.bag_icon} alt=''/><p>Orders</p></li>
             <hr />
