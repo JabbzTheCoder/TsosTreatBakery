@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import './CheckOut.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
+import PaystackPop from '@paystack/inline-js'
+
 
 const CheckOut = () => {
   const { getTotalCartAmount } = useContext(StoreContext);
@@ -12,8 +14,8 @@ const CheckOut = () => {
     city: null,
     province: null,
     zip: null,
-    type
   });
+  const payStackPopUp = new PaystackPop();
 
   const isAllDataPopulated = () => {
     return Object.values(data).every((value) => Boolean(value));
@@ -66,12 +68,18 @@ const CheckOut = () => {
       console.error('Failed to fetch delivery rate:', error);
     }
   };
+  const initializeTransaction = async () =>{
+    const res = await axios.post("http://localhost:4000/api/order/initialize-transaction");
+    const payStackAccessCode = res.data.data.access_code;
+    payStackPopUp.resumeTransaction(payStackAccessCode)
+  }
 
   // useEffect to make API call when all fields are populated
   useEffect(() => {
     // Call API only if all data fields are populated
     if (isAllDataPopulated()) {
       fetchDeliveryRate();
+      initializeTransaction();
     }
   }, [data]); // Trigger effect when data changes
 
