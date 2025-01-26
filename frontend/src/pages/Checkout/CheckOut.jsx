@@ -12,6 +12,7 @@ const CheckOut = () => {
     city: null,
     province: null,
     zip: null,
+    type
   });
 
   const isAllDataPopulated = () => {
