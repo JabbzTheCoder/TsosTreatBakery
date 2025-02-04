@@ -79,7 +79,6 @@ const CheckOut = () => {
     // Call API only if all data fields are populated
     if (isAllDataPopulated()) {
       fetchDeliveryRate();
-      initializeTransaction();
     }
   }, [data]); // Trigger effect when data changes
 
@@ -120,7 +119,7 @@ const CheckOut = () => {
               <b>R{getTotalCartAmount() + deliveryFee}</b>
             </div>
           </div>
-          <button>Proceed to Payment</button>
+          <button onClick={initializeTransaction} >Proceed to Payment</button>
         </div>
       </div>
     </form>
